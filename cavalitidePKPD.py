@@ -8,7 +8,7 @@ products = {
     'Cavalitide': dict(
         Favailable=0.01,
         ka=0.006,
-        D=21,
+        D=29,
         interval=24,
         n_doses=100,
         depot='gut (oral)'
