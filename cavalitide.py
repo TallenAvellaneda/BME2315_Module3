@@ -11,7 +11,7 @@ Kd2 = 0.38 # default 0.38 L2, semaglutide (to fit)
 L1 = 0.015 # [nM] GLP1 (fasting)
 L2 = np.logspace(-3, 2, 500) # [nM] semaglutide or cavalitide
 
-data = np.loadtxt("cavalitide_data1.csv", delimiter=",", skiprows=1)
+data = np.loadtxt("cavalitide_data.csv", delimiter=",", skiprows=1)
 L2_loaded, Fact_loaded = data[:, 0], data[:, 1]
 
 kd2_testpoints = []
