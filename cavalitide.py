@@ -1,17 +1,19 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy.optimize import curve_fit
+from pathlib import Path
 
 def Fact(L1, L2, Kd1, Kd2):
     """Fractional receptor activation with two agonists L1 and L2"""
     return (Kd2*L1+Kd1*L2) / (Kd1*Kd2 + Kd2*L1 + Kd1*L2)
 
 Kd1 = 0.17 # L1, GLP1
-Kd2 = 0.38 # default 0.38 L2, semaglutide (to fit)
+Kd2 = 0.38 # initial estimate for Cavalitide (to fit)
 L1 = 0.015 # [nM] GLP1 (fasting)
-L2 = np.logspace(-3, 2, 500) # [nM] semaglutide or cavalitide
+L2 = np.logspace(-3, 2, 500) # [nM] cavalitide
 
-data = np.loadtxt("cavalitide_data.csv", delimiter=",", skiprows=1)
+data_path = Path(__file__).parent / "cavalitide_data.csv"
+data = np.loadtxt(data_path, delimiter=",", skiprows=1)
 L2_loaded, Fact_loaded = data[:, 0], data[:, 1]
 
 kd2_testpoints = []
@@ -43,8 +45,8 @@ plt.semilogx(L2, Fact(L1, L2, Kd1, Kd2_fit), "--", lw=2,
              label=f"curvefit (Kd2 = {Kd2_fit:.3f} nM)")
 
 plt.ylim(-0.1, 1.1)
-plt.xlabel("[semaglutide] (nM)")
+plt.xlabel("[cavalitide] (nM)")
 plt.ylabel("Fraction active (Fact)")
-plt.title("GLP1R activation by semaglutide with GLP1 present")
+plt.title("GLP1R activation by cavalitide with GLP1 present")
 plt.legend(loc="upper left")
 plt.show()

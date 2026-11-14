@@ -3,6 +3,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy.optimize import curve_fit
+from pathlib import Path
 
 def Fact(L1, L2, Kd1, Kd2):
     """Fractional receptor activation with two agonists L1 and L2"""
@@ -15,7 +16,9 @@ L1 = 0.015 # [nM] GLP1 (fasting)
 L2 = np.logspace(-3, 2, 500) # [nM] semaglutide or cavalitide
 
 # Load the data
-data = np.loadtxt("semaglutide_data.csv", delimiter=",", skiprows=1)
+data_path = Path(__file__).parent / "semaglutide_data.csv"
+data = np.loadtxt(data_path, delimiter=",", skiprows=1)
+
 L2_loaded, Fact_loaded = data[:, 0], data[:, 1]
 
 # Approach 1: Brute force optimization of Kd2: try many candidate values in a for loop
