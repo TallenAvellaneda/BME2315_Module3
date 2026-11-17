@@ -20,7 +20,7 @@ products = {
 
     'Cavalitide': dict(Favailable=0.01,
                    ka=0.006,
-                   D=21,
+                   D=29,
                    interval=24,
                    n_doses=100,
                    depot='gut (oral)'),
@@ -151,7 +151,7 @@ plt.plot(t_cav / 24, Ffree * Cc_cav,
 
 plt.xlabel("Time (days)")
 plt.ylabel("Cavalitide")
-plt.title("Cavalitide: 21 mg every 24 h, 100 doses")
+plt.title("Cavalitide: 29 mg every 24 h, 100 doses")
 
 plt.legend()
 plt.grid(alpha=0.3)
