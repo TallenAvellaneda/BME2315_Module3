@@ -137,6 +137,8 @@ plt.xlabel("Time (days)")
 plt.ylabel("Fraction active (Fact)")
 plt.title("GLP1R activation by Cavalitide over time")
 
+plt.axhline(0.9, ls=":", c="black", lw=1)
+plt.text(0, 0.925, "Target Fact = 0.9")
 plt.ylim(0, 1.05)
 plt.legend()
 plt.grid(alpha=0.3)

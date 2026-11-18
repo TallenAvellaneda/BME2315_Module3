@@ -53,7 +53,7 @@ sema_data = np.loadtxt("semaglutide_data.csv", delimiter=",", skiprows=1)
 cav_L2_loaded, cav_Fact_loaded = cav_data[:, 0], cav_data[:, 1]
 sema_L2_loaded, sema_Fact_loaded = sema_data[:, 0], sema_data[:, 1]
 
-# prints information of the 
+# prints information based on the curve of best fit model such as the predicted Kd, SSE, and R^2
 print("Cavalitide Kd2:")
 cav_best_kd2, cav_r_squared = find_kd(Kd1, L1, cav_L2_loaded, cav_Fact_loaded)
 print("-------------------------")
@@ -61,6 +61,7 @@ print("Semaglutide Kd2:")
 sema_best_kd2, sema_r_squared = find_kd(Kd1, L1, sema_L2_loaded, sema_Fact_loaded)
 print("-------------------------")
 
+# plots the information on one plot to easily compare the differences in semaglutide and cavalitide
 plt.figure()
 plt.semilogx(cav_L2_loaded, cav_Fact_loaded, "o", c="blue",
             label="Cavalitide Experimental Data")
